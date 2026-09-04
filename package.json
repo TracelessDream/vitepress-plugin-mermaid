@@ -1,6 +1,6 @@
 {
-  "name": "vitepress-plugin-mermaid",
-  "version": "2.0.17",
+  "name": "@tracelessdream/vitepress-plugin-mermaid",
+  "version": "1.0.0",
   "description": "Add mermaid support for Vitepress",
   "type": "module",
   "types": "./dist/index.d.ts",
@@ -46,9 +46,10 @@
     "@mermaid-js/mermaid-mindmap": "^9.3.0"
   },
   "devDependencies": {
-    "vite-plugin-dts": "^3.0.3",
+    "typescript": "^5.9.3",
+    "vite": "5",
+    "vite-plugin-dts": "^3.7.3",
     "vite-plugin-static-copy": "^0.13.1",
-    "vitepress": "^1.0.0",
-    "vite": "5"
+    "vitepress": "^1.0.0"
   }
 }

@@ -9,8 +9,17 @@ This section will help you add mermaid support for VitePress.
 ## Install
 
 ```bash
-npm i vitepress-plugin-mermaid mermaid -D
+npm i @tracelessdream/vitepress-plugin-mermaid mermaid -D
 ```
+
+With pnpm:
+
+```bash
+pnpm add @tracelessdream/vitepress-plugin-mermaid mermaid -D
+```
+
+The plugin supports standard pnpm installation and does not require
+`--shamefully-hoist`.
 
 ## Setup it up
 
@@ -18,7 +27,7 @@ Add wrapper
 
 ```js
 // .vitepress/config.js
-import { withMermaid } from "vitepress-plugin-mermaid";
+import { withMermaid } from "@tracelessdream/vitepress-plugin-mermaid";
 
 export default withMermaid({
     // your existing vitepress config...
@@ -46,3 +55,13 @@ Visualize with ```mermaid
 flowchart LR
   Start --> Stop
 ```
+
+## Preview and Interaction
+
+Click a rendered diagram to open the preview. The preview supports:
+
+- Zooming with the `+` and `-` buttons or the mouse wheel
+- Panning by dragging the diagram
+- Resetting the view to fit the current window
+- Downloading the rendered diagram as an SVG file
+- Closing with `Esc` or the close button

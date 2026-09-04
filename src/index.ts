@@ -29,13 +29,22 @@ export const withMermaid = (config: UserConfig) => {
   if (!config.vite.optimizeDeps) config.vite.optimizeDeps = {};
   if (!config.vite.optimizeDeps.include) config.vite.optimizeDeps.include = [];
 
+  // Pre-bundle mermaid's CommonJS/UMD deep dependencies via the `mermaid > dep`
+  // nested syntax. Vite resolves these relative to mermaid's own installation,
+  // so strict pnpm isolation no longer requires users to explicitly install
+  // these transitive packages in the root package.json.
+  const vitePreBundledMermaidDeps = [
+    "mermaid > @braintree/sanitize-url",
+    "mermaid > dayjs",
+    "mermaid > debug",
+    "mermaid > cytoscape",
+    "mermaid > cytoscape-cose-bilkent",
+  ];
   config.vite.optimizeDeps.include = [
-    ...config.vite.optimizeDeps.include,
-    "@braintree/sanitize-url",
-    "dayjs",
-    "debug",
-    "cytoscape-cose-bilkent",
-    "cytoscape",
+    ...new Set([
+      ...config.vite.optimizeDeps.include,
+      ...vitePreBundledMermaidDeps,
+    ]),
   ];
   if (!config.vite.resolve) config.vite.resolve = {};
 
